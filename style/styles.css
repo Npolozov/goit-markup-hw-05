@@ -81,11 +81,10 @@ header {
 }
 
 .link.curent {
-  display: flex;
   position: relative;
 }
 
-.curent::after {
+.curent::before {
   position: absolute;
   content: "";
   bottom: -1px;
