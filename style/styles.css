@@ -11,7 +11,7 @@
 body {
   background-color: white;
   color: var(--primary-text-color);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   letter-spacing: 0.03em;
 }
@@ -84,10 +84,11 @@ header {
   position: relative;
 }
 
-.curent::before {
+.curent::after {
   position: absolute;
-  content: "";
-  bottom: -1px;
+  content: '';
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 4px;
   border-radius: 2px;
@@ -111,6 +112,7 @@ header {
   letter-spacing: 0.02em;
   text-decoration: none;
   align-items: center;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .site-nav .item:not(:last-child) {
   margin-right: 40px;
@@ -146,6 +148,7 @@ header {
   line-height: 1.1;
   letter-spacing: 0.02em;
   text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-contact .link:hover,
@@ -176,6 +179,8 @@ header {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-button:hover,
@@ -190,11 +195,7 @@ header {
   height: 480;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(
-      to top,
-      rgba(47, 48, 58, 0.4),
-      rgba(47, 48, 58, 0.4)
-    ),
+  background-image: linear-gradient(to top, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
     url(../images/Hero.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -370,6 +371,7 @@ header {
   justify-content: center;
   align-items: center;
   color: #afb1b8;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover,
@@ -387,7 +389,7 @@ header {
 
 .company-title {
   margin-bottom: 50px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
@@ -414,6 +416,8 @@ header {
   border-radius: 4px;
   width: 170px;
   height: 92px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .company-link:hover,
@@ -464,6 +468,7 @@ header {
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   font-style: normal;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-footer .item {
@@ -483,7 +488,7 @@ header {
 }
 
 .footer-social {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 700;
   font-size: 14px;
   line-height: 16px;
@@ -514,6 +519,7 @@ header {
   color: var(--primary-text-color);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-link:hover,
@@ -550,6 +556,8 @@ header {
   cursor: pointer;
   border: transparent;
   border-radius: 4px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .buttons:hover,
@@ -624,13 +632,21 @@ header {
   overflow: hidden;
 }
 
-.position-photo::before {
-  content: "";
+.overlay-position {
+  top: 0;
+  left: 0;
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   background-color: rgba(33, 150, 243, 0.9);
   opacity: 0;
+  transform: translateY(101%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-link:hover .overlay-position {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .position-background {
@@ -642,6 +658,7 @@ header {
   transform: translate(-50%, -50%);
   padding: 63px 24px;
   opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .position-paragraf {
@@ -652,11 +669,12 @@ header {
   color: #ffffff;
 }
 
-.position-photo:hover::before {
+.project-link:hover .overlay-position {
   opacity: 1;
+  transform: translateY(0);
 }
 
-.position-background:hover {
+.project-link:hover .position-background {
   opacity: 1;
 }
 
@@ -669,21 +687,31 @@ header {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+  transform: scale(0.5) rotate(45deg);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   min-height: 581px;
   min-width: 582px;
   padding: 10px;
-
   background-color: white;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
