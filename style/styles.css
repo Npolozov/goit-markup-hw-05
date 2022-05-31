@@ -52,10 +52,6 @@ img {
 /* Logo */
 header {
   border-bottom: 1px solid #ececec;
-  position: fixed;
-  width: 100%;
-  background-color: white;
-  z-index: 99;
 }
 .main-nav {
   display: flex;
